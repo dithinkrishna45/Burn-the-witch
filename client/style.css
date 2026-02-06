@@ -1,7 +1,8 @@
 /**
- * TEXT SYNC GAME - Stylesheet
+ * BURN THE WITCH - Stylesheet
  * ============================
- * Modern, dark theme with glassmorphism effects
+ * Forest green theme inspired by envifest.in
+ * Modern dark theme with glassmorphism effects
  * Responsive design with smooth animations
  */
 
@@ -9,44 +10,46 @@
    CSS VARIABLES (Design Tokens)
    ============================================ */
 :root {
-    /* Color Palette - Dark Theme */
-    --bg-primary: #0a0a0f;
-    --bg-secondary: #12121a;
-    --bg-tertiary: #1a1a25;
-    
-    /* Accent Colors */
-    --accent-primary: #6366f1;
-    --accent-secondary: #8b5cf6;
-    --accent-gradient: linear-gradient(135deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
-    
+    /* Color Palette - Forest Green Dark Theme (inspired by envifest.in) */
+    --bg-primary: #0a120e;
+    --bg-secondary: #0d1a14;
+    --bg-tertiary: #132920;
+
+    /* Accent Colors - Forest Green */
+    --accent-primary: #1b4d2e;
+    --accent-secondary: #2d7a4a;
+    --accent-tertiary: #3fa368;
+    --accent-gradient: linear-gradient(135deg, #1b4d2e 0%, #2d7a4a 50%, #3fa368 100%);
+    --accent-glow: rgba(45, 122, 74, 0.4);
+
     /* Text Colors */
-    --text-primary: #f8fafc;
-    --text-secondary: #94a3b8;
-    --text-muted: #64748b;
-    
+    --text-primary: #e8f5ec;
+    --text-secondary: #a8cdb8;
+    --text-muted: #6b9b7d;
+
     /* Status Colors */
-    --status-online: #22c55e;
+    --status-online: #4ade80;
     --status-offline: #ef4444;
-    --status-connecting: #f59e0b;
-    
-    /* Glass Effect */
-    --glass-bg: rgba(255, 255, 255, 0.05);
-    --glass-border: rgba(255, 255, 255, 0.1);
-    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
-    
+    --status-connecting: #fbbf24;
+
+    /* Glass Effect - Forest themed */
+    --glass-bg: rgba(27, 77, 46, 0.08);
+    --glass-border: rgba(63, 163, 104, 0.15);
+    --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+
     /* Spacing */
     --spacing-xs: 0.25rem;
     --spacing-sm: 0.5rem;
     --spacing-md: 1rem;
     --spacing-lg: 1.5rem;
     --spacing-xl: 2rem;
-    
+
     /* Border Radius */
     --radius-sm: 8px;
     --radius-md: 12px;
     --radius-lg: 16px;
     --radius-xl: 24px;
-    
+
     /* Transitions */
     --transition-fast: 150ms ease;
     --transition-normal: 250ms ease;
@@ -56,7 +59,9 @@
 /* ============================================
    BASE STYLES
    ============================================ */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
     box-sizing: border-box;
     margin: 0;
     padding: 0;
@@ -74,6 +79,8 @@ body {
     min-height: 100vh;
     line-height: 1.6;
     overflow-x: hidden;
+    /* Forest green ambient gradient background */
+    background: linear-gradient(135deg, var(--bg-primary) 0%, #0d1f16 50%, var(--bg-secondary) 100%);
 }
 
 /* ============================================
@@ -93,48 +100,75 @@ body {
 .bg-circle {
     position: absolute;
     border-radius: 50%;
-    filter: blur(80px);
-    opacity: 0.4;
-    animation: float 20s ease-in-out infinite;
+    filter: blur(100px);
+    opacity: 0.35;
+    animation: float 25s ease-in-out infinite;
 }
 
 .bg-circle-1 {
-    width: 400px;
-    height: 400px;
+    width: 500px;
+    height: 500px;
     background: var(--accent-primary);
-    top: -100px;
-    right: -100px;
+    top: -150px;
+    right: -150px;
     animation-delay: 0s;
 }
 
 .bg-circle-2 {
-    width: 300px;
-    height: 300px;
+    width: 400px;
+    height: 400px;
     background: var(--accent-secondary);
-    bottom: -50px;
-    left: -50px;
-    animation-delay: -5s;
+    bottom: -100px;
+    left: -100px;
+    animation-delay: -7s;
 }
 
 .bg-circle-3 {
-    width: 200px;
-    height: 200px;
-    background: #a855f7;
+    width: 250px;
+    height: 250px;
+    background: var(--accent-tertiary);
     top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
-    animation-delay: -10s;
+    animation-delay: -12s;
+}
+
+/* Additional decorative leaf-like elements */
+.bg-decoration::before {
+    content: '';
+    position: absolute;
+    width: 200px;
+    height: 200px;
+    background: radial-gradient(ellipse, rgba(63, 163, 104, 0.1) 0%, transparent 70%);
+    top: 20%;
+    left: 10%;
+    animation: float 30s ease-in-out infinite reverse;
+}
+
+.bg-decoration::after {
+    content: '';
+    position: absolute;
+    width: 300px;
+    height: 300px;
+    background: radial-gradient(ellipse, rgba(45, 122, 74, 0.08) 0%, transparent 70%);
+    bottom: 30%;
+    right: 5%;
+    animation: float 20s ease-in-out infinite;
 }
 
 @keyframes float {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translate(0, 0) scale(1);
     }
+
     33% {
-        transform: translate(30px, -30px) scale(1.05);
+        transform: translate(40px, -40px) scale(1.08);
     }
+
     66% {
-        transform: translate(-20px, 20px) scale(0.95);
+        transform: translate(-30px, 30px) scale(0.95);
     }
 }
 
@@ -171,23 +205,35 @@ body {
     justify-content: center;
     gap: var(--spacing-sm);
     margin-bottom: var(--spacing-sm);
+    text-shadow: 0 0 40px var(--accent-glow);
 }
 
 .title-icon {
     font-size: 2rem;
     -webkit-text-fill-color: initial;
-    animation: pulse 2s ease-in-out infinite;
+    animation: burn 1.5s ease-in-out infinite;
+    filter: drop-shadow(0 0 10px rgba(255, 100, 0, 0.6));
 }
 
-@keyframes pulse {
-    0%, 100% { transform: scale(1); }
-    50% { transform: scale(1.1); }
+@keyframes burn {
+
+    0%,
+    100% {
+        transform: scale(1) rotate(-5deg);
+        filter: drop-shadow(0 0 10px rgba(255, 100, 0, 0.6));
+    }
+
+    50% {
+        transform: scale(1.15) rotate(5deg);
+        filter: drop-shadow(0 0 20px rgba(255, 150, 0, 0.8));
+    }
 }
 
 .subtitle {
     color: var(--text-secondary);
     font-size: 1.1rem;
     font-weight: 400;
+    letter-spacing: 0.5px;
 }
 
 /* Status Bar */
@@ -201,7 +247,8 @@ body {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-xl);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
+    box-shadow: 0 4px 20px rgba(0, 0, 0, 0.2);
 }
 
 .status-indicator {
@@ -215,7 +262,7 @@ body {
 .status-indicator.online {
     background: var(--status-online);
     animation: none;
-    box-shadow: 0 0 10px var(--status-online);
+    box-shadow: 0 0 12px var(--status-online);
 }
 
 .status-indicator.offline {
@@ -224,8 +271,15 @@ body {
 }
 
 @keyframes blink {
-    0%, 100% { opacity: 1; }
-    50% { opacity: 0.3; }
+
+    0%,
+    100% {
+        opacity: 1;
+    }
+
+    50% {
+        opacity: 0.3;
+    }
 }
 
 .status-text {
@@ -252,29 +306,31 @@ body {
     background: var(--glass-bg);
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-lg);
-    backdrop-filter: blur(10px);
+    backdrop-filter: blur(12px);
     margin: var(--spacing-lg) 0;
     display: flex;
     flex-direction: column;
     gap: var(--spacing-md);
+    box-shadow: inset 0 2px 20px rgba(0, 0, 0, 0.15);
 }
 
-/* Custom Scrollbar */
+/* Custom Scrollbar - Forest themed */
 .message-area::-webkit-scrollbar {
     width: 6px;
 }
 
 .message-area::-webkit-scrollbar-track {
-    background: transparent;
+    background: rgba(27, 77, 46, 0.1);
+    border-radius: 3px;
 }
 
 .message-area::-webkit-scrollbar-thumb {
-    background: var(--glass-border);
+    background: var(--accent-primary);
     border-radius: 3px;
 }
 
 .message-area::-webkit-scrollbar-thumb:hover {
-    background: var(--text-muted);
+    background: var(--accent-secondary);
 }
 
 /* Welcome Message */
@@ -295,9 +351,19 @@ body {
 }
 
 @keyframes wave {
-    0%, 100% { transform: rotate(0deg); }
-    25% { transform: rotate(20deg); }
-    75% { transform: rotate(-10deg); }
+
+    0%,
+    100% {
+        transform: rotate(0deg);
+    }
+
+    25% {
+        transform: rotate(20deg);
+    }
+
+    75% {
+        transform: rotate(-10deg);
+    }
 }
 
 /* Message Bubbles */
@@ -311,8 +377,10 @@ body {
 }
 
 .message.own {
-    background: var(--accent-primary);
+    background: linear-gradient(135deg, var(--accent-primary) 0%, var(--accent-secondary) 100%);
     margin-left: auto;
+    border: 1px solid rgba(63, 163, 104, 0.3);
+    box-shadow: 0 4px 15px rgba(45, 122, 74, 0.3);
 }
 
 .message.other {
@@ -325,6 +393,7 @@ body {
         opacity: 0;
         transform: translateY(10px);
     }
+
     to {
         opacity: 1;
         transform: translateY(0);
@@ -347,7 +416,7 @@ body {
 }
 
 .message.own .message-meta {
-    color: rgba(255, 255, 255, 0.7);
+    color: rgba(232, 245, 236, 0.7);
 }
 
 /* ============================================
@@ -364,13 +433,13 @@ body {
     border: 1px solid var(--glass-border);
     border-radius: var(--radius-xl);
     padding: var(--spacing-sm);
-    backdrop-filter: blur(10px);
-    transition: border-color var(--transition-normal);
+    backdrop-filter: blur(12px);
+    transition: border-color var(--transition-normal), box-shadow var(--transition-normal);
 }
 
 .input-container:focus-within {
-    border-color: var(--accent-primary);
-    box-shadow: 0 0 20px rgba(99, 102, 241, 0.2);
+    border-color: var(--accent-secondary);
+    box-shadow: 0 0 25px rgba(45, 122, 74, 0.25);
 }
 
 .text-input {
@@ -396,17 +465,18 @@ body {
     background: var(--accent-gradient);
     border: none;
     border-radius: var(--radius-lg);
-    color: white;
+    color: var(--text-primary);
     font-size: 1rem;
     font-weight: 600;
     font-family: inherit;
     cursor: pointer;
     transition: transform var(--transition-fast), box-shadow var(--transition-fast);
+    box-shadow: 0 4px 15px rgba(45, 122, 74, 0.3);
 }
 
 .send-button:hover {
     transform: scale(1.02);
-    box-shadow: 0 4px 20px rgba(99, 102, 241, 0.4);
+    box-shadow: 0 6px 25px rgba(45, 122, 74, 0.5);
 }
 
 .send-button:active {
@@ -431,6 +501,7 @@ body {
     font-family: inherit;
     font-size: 0.8rem;
     border: 1px solid var(--glass-border);
+    color: var(--accent-tertiary);
 }
 
 /* ============================================
@@ -440,35 +511,35 @@ body {
     .container {
         padding: var(--spacing-md);
     }
-    
+
     .title {
         font-size: 1.8rem;
     }
-    
+
     .subtitle {
         font-size: 0.95rem;
     }
-    
+
     .status-bar {
         flex-wrap: wrap;
         gap: var(--spacing-sm);
     }
-    
+
     .user-count {
         border-left: none;
         padding-left: 0;
         width: 100%;
         text-align: center;
     }
-    
+
     .message-area {
         min-height: 300px;
     }
-    
+
     .send-button {
         padding: var(--spacing-md);
     }
-    
+
     .send-text {
         display: none;
     }
@@ -478,7 +549,10 @@ body {
    ACCESSIBILITY
    ============================================ */
 @media (prefers-reduced-motion: reduce) {
-    *, *::before, *::after {
+
+    *,
+    *::before,
+    *::after {
         animation-duration: 0.01ms !important;
         animation-iteration-count: 1 !important;
         transition-duration: 0.01ms !important;
@@ -488,6 +562,6 @@ body {
 /* Focus states for keyboard navigation */
 .send-button:focus-visible,
 .text-input:focus-visible {
-    outline: 2px solid var(--accent-primary);
+    outline: 2px solid var(--accent-tertiary);
     outline-offset: 2px;
 }
