@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <!-- ==========================================
          TEXT SYNC GAME - Client HTML
          A real-time multiplayer text sync application
          ========================================== -->
-    
+
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    
+
     <!-- SEO Meta Tags -->
-    <meta name="description" content="Real-time text synchronization game - Send messages instantly to all connected players">
+    <meta name="description"
+        content="Real-time text synchronization game - Send messages instantly to all connected players">
     <meta name="keywords" content="multiplayer, game, real-time, websocket, chat">
     <meta name="author" content="Text Sync Game">
-    
+
     <title>Text Sync Game - Real-Time Multiplayer</title>
-    
+
     <!-- Stylesheet -->
     <link rel="stylesheet" href="style.css">
-    
+
     <!-- Google Fonts for modern typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
+
 <body>
     <!-- Main Container -->
     <div class="container">
@@ -34,7 +37,7 @@
                 Text Sync Game
             </h1>
             <p class="subtitle">Real-time multiplayer communication</p>
-            
+
             <!-- Connection Status -->
             <div class="status-bar">
                 <span class="status-indicator" id="status-indicator"></span>
@@ -42,7 +45,7 @@
                 <span class="user-count" id="user-count">0 users online</span>
             </div>
         </header>
-        
+
         <!-- Message Display Area -->
         <main class="message-area" id="message-area">
             <!-- Messages will be dynamically inserted here -->
@@ -51,18 +54,12 @@
                 <p>Welcome! Type a message below and send it to all connected players.</p>
             </div>
         </main>
-        
+
         <!-- Input Section -->
         <footer class="input-section">
             <div class="input-container">
-                <input 
-                    type="text" 
-                    id="text-input" 
-                    class="text-input" 
-                    placeholder="Type your message here..."
-                    autocomplete="off"
-                    maxlength="500"
-                >
+                <input type="text" id="text-input" class="text-input" placeholder="Type your message here..."
+                    autocomplete="off" maxlength="500">
                 <button id="send-button" class="send-button">
                     <span class="send-icon">➤</span>
                     <span class="send-text">Send</span>
@@ -71,18 +68,16 @@
             <p class="hint-text">Press <kbd>Enter</kbd> to send</p>
         </footer>
     </div>
-    
+
     <!-- Decorative background elements -->
     <div class="bg-decoration">
         <div class="bg-circle bg-circle-1"></div>
         <div class="bg-circle bg-circle-2"></div>
         <div class="bg-circle bg-circle-3"></div>
     </div>
-    
-    <!-- Socket.IO Client Library -->
-    <script src="/socket.io/socket.io.js"></script>
-    
+
     <!-- Application Script -->
     <script src="script.js"></script>
 </body>
+
 </html>

@@ -1,39 +1,29 @@
 {
     "version": 2,
-    "builds": [
+    "public": true,
+    "rewrites": [
         {
-            "src": "server/server.js",
-            "use": "@vercel/node"
-        },
-        {
-            "src": "client/**",
-            "use": "@vercel/static"
+            "source": "/api/(.*)",
+            "destination": "/api/$1"
         }
     ],
-    "routes": [
+    "headers": [
         {
-            "src": "/socket.io/(.*)",
-            "dest": "server/server.js"
-        },
-        {
-            "src": "/(.*\\.css)",
-            "dest": "client/$1"
-        },
-        {
-            "src": "/(.*\\.js)",
-            "dest": "client/$1"
-        },
-        {
-            "src": "/(.*\\.html)",
-            "dest": "client/$1"
-        },
-        {
-            "src": "/",
-            "dest": "client/index.html"
-        },
-        {
-            "src": "/(.*)",
-            "dest": "server/server.js"
+            "source": "/api/(.*)",
+            "headers": [
+                {
+                    "key": "Access-Control-Allow-Origin",
+                    "value": "*"
+                },
+                {
+                    "key": "Access-Control-Allow-Methods",
+                    "value": "GET, POST, OPTIONS"
+                },
+                {
+                    "key": "Access-Control-Allow-Headers",
+                    "value": "Content-Type"
+                }
+            ]
         }
     ]
 }
