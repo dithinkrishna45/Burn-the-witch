@@ -1,0 +1,24 @@
+{
+    "name": "text-sync-game",
+    "version": "1.0.0",
+    "description": "Real-time text synchronization game for multiplayer web experience",
+    "scripts": {
+        "dev": "node server/server.js",
+        "start": "node server/server.js",
+        "build": "echo 'Build complete'",
+        "vercel-build": "echo 'Vercel build complete'"
+    },
+    "keywords": [
+        "websocket",
+        "socket.io",
+        "multiplayer",
+        "game",
+        "vercel"
+    ],
+    "author": "",
+    "license": "ISC",
+    "dependencies": {
+        "express": "^4.18.2",
+        "socket.io": "^4.7.4"
+    }
+}

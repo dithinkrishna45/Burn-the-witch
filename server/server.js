@@ -112,20 +112,22 @@ io.on('connection', (socket) => {
 });
 
 // ============================================
-// START THE SERVER
+// START THE SERVER (for local development)
 // ============================================
-server.listen(PORT, () => {
-    console.log('');
-    console.log('╔════════════════════════════════════════════╗');
-    console.log('║      TEXT SYNC GAME - Server Running       ║');
-    console.log('╠════════════════════════════════════════════╣');
-    console.log(`║  🌐 Local:   http://localhost:${PORT}          ║`);
-    console.log(`║  📡 Status:  Ready for connections         ║`);
-    console.log('╚════════════════════════════════════════════╝');
-    console.log('');
-    console.log('Open the URL in multiple browser tabs to test real-time sync!');
-    console.log('');
-});
+if (process.env.NODE_ENV !== 'production' && !process.env.VERCEL) {
+    server.listen(PORT, () => {
+        console.log('');
+        console.log('╔════════════════════════════════════════════╗');
+        console.log('║      TEXT SYNC GAME - Server Running       ║');
+        console.log('╠════════════════════════════════════════════╣');
+        console.log(`║  🌐 Local:   http://localhost:${PORT}          ║`);
+        console.log(`║  📡 Status:  Ready for connections         ║`);
+        console.log('╚════════════════════════════════════════════╝');
+        console.log('');
+        console.log('Open the URL in multiple browser tabs to test real-time sync!');
+        console.log('');
+    });
+}
 
 // ============================================
 // GRACEFUL SHUTDOWN (Good practice)
@@ -137,3 +139,8 @@ process.on('SIGTERM', () => {
         process.exit(0);
     });
 });
+
+// ============================================
+// EXPORT FOR VERCEL
+// ============================================
+module.exports = app;
